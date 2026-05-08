@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skill-Swap | Bilim Almashishning Yangi Davri</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        /* 1. CSS SOZLAMALARI (STILLAR) */
+        :root {
+            --primary: #10b981; /* Yashil - Skill-Swap asosiy rangi */
+            --secondary: #0f172a; /* To'q ko'k */
+            --accent: #3b82f6; /* Moviy */
+            --bg: #f8fafc;
+            --text: #334155;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navbar */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--secondary);
+            text-decoration: none;
+        }
+
+        .logo span { color: var(--primary); }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--secondary);
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover { color: var(--primary); }
+
+        .btn-main {
+            background: var(--primary);
+            color: var(--white);
+            padding: 10px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .btn-main:hover { transform: scale(1.05); box-shadow: 0 5px 15px rgba(16, 185, 129, 0.4); }
+
+        /* Hero Section */
+        .hero {
+            padding: 100px 0;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, #fff 0%, #f0fdf4 100%);
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: 52px;
+            line-height: 1.1;
+            color: var(--secondary);
+            margin-bottom: 20px;
+        }
+
+        .hero-content p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            color: #64748b;
+        }
+
+        .hero-img img {
+            width: 100%;
+            border-radius: 30px;
+            box-shadow: 20px 20px 60px rgba(0,0,0,0.1);
+        }
+
+        /* Stats / Coin Section */
+        .stats {
+            background: var(--secondary);
+            color: var(--white);
+            padding: 60px 0;
+            margin-top: -50px;
+            border-radius: 30px;
+            text-align: center;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .stat-item h2 { font-size: 40px; color: var(--primary); }
+
+        /* Skills Section */
+        .skills-section { padding: 80px 0; }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .search-box {
+            max-width: 600px;
+            margin: 20px auto;
+            position: relative;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 15px 25px;
+            border-radius: 50px;
+            border: 2px solid #e2e8f0;
+            outline: none;
+            font-size: 16px;
+        }
+
+        .skill-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .skill-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 20px;
+            border-bottom: 4px solid #e2e8f0;
+            transition: 0.3s;
+            text-align: center;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px);
+            border-bottom-color: var(--primary);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .skill-card i {
+            font-size: 40px;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .skill-card h3 { margin-bottom: 10px; }
+
+        .btn-swap {
+            margin-top: 15px;
+            background: var(--secondary);
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        /* Footer */
+        footer {
+            background: #f1f5f9;
+            padding: 80px 0 30px;
+            margin-top: 50px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 50px;
+            margin-bottom: 50px;
+        }
+
+        .contact-info p { margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
+        .contact-info i { color: var(--primary); }
+
+        .copy {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #cbd5e1;
+            font-size: 14px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-grid, .stats-grid, .footer-grid { grid-template-columns: 1fr; }
+            .hero-content h1 { font-size: 36px; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">Skill<span>Swap</span></a>
+                <ul class="nav-links">
+                    <li><a href="#home">Asosiy</a></li>
+                    <li><a href="#about">Loyha</a></li>
+                    <li><a href="#skills">Bilimlar</a></li>
+                    <li><a href="#contact">Aloqa</a></li>
+                </ul>
+                <a href="#" class="btn-main">Ro'yxatdan o'tish</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-grid">
+                <div class="hero-content">
+                    <h1>Dunyodagi eng katta <br><span>"Bilim Banki"</span>ga xush kelibsiz!</h1>
+                    <p>Skill-Swap — bu vaqt va tajriba asosida ishlaydigan hamjamiyat: o'rgating, o'rganing, hamjamiyatga hissa qo'shing.</p>
+                    <a href="#skills" class="btn-main">Bilimlarni ko'rish</a>
+                </div>
+                <div class="hero-img">
+                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Team Work">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h2>1 soat</h2>
+                    <p>= 1 Skill-Coin</p>
+                </div>
+                <div class="stat-item">
+                    <h2>1000+</h2>
+                    <p>Faol Mentorlar</p>
+                </div>
+                <div class="stat-item">
+                    <h2>Bepul</h2>
+                    <p>Bilim Almashinuvi</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="skills-section" id="skills">
+        <div class="container">
+            <div class="section-header">
+                <h2>Qanday bilim o'rganmoqchisiz?</h2>
+                <div class="search-box">
+                    <input type="text" id="skillSearch" placeholder="Masalan: Python, Grafik dizayn, IELTS...">
+                </div>
+            </div>
+            
+            <div class="skill-grid" id="skillContainer">
+                </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="contact-info">
+                    <a href="#" class="logo">Skill<span>Swap</span></a>
+                    <p style="margin-top: 20px;">Loyihaning muallifi: Tursinboyev Sanjarbek</p>
+                    <p><i class="fas fa-map-marker-alt"></i> IT Park Gurlan, Xorazm</p>
+                </div>
+                <div>
+                    <h4>Aloqa</h4>
+                    <p><i class="fas fa-envelope"></i> info@skill-swap.uz</p>
+                    <p><i class="fas fa-phone"></i> +998 94 310 77 06</p>
+                </div>
+                <div>
+                    <h4>Ijtimoiy tarmoqlar</h4>
+                    <div style="display: flex; gap: 15px; font-size: 24px;">
+                        <a href="#" style="color: var(--secondary);"><i class="fab fa-telegram"></i></a>
+                        <a href="#" style="color: var(--secondary);"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copy">
+                &copy; 2024 Skill-Swap Platformasi. IT Park Gurlan bilan hamkorlikda.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 1. Ma'lumotlar bazasi (Demo)
+        const skillsData = [
+            { id: 1, name: "Python Dasturlash", mentor: "Sanjarbek", icon: "fa-code", category: "IT" },
+            { id: 2, name: "Grafik Dizayn", mentor: "Azizbek", icon: "fa-palette", category: "Dizayn" },
+            { id: 3, name: "IELTS 7.5+", mentor: "Madina", icon: "fa-language", category: "Tillar" },
+            { id: 4, name: "SMM Marketing", mentor: "Diyor", icon: "fa-share-nodes", category: "Biznes" },
+            { id: 5, name: "Web Dasturlash", mentor: "Otabek", icon: "fa-laptop-code", category: "IT" },
+            { id: 6, name: "Gitara darslari", mentor: "Anvar", icon: "fa-music", category: "San'at" },
+            { id: 7, name: "Matematika", mentor: "Shahlo", icon: "fa-calculator", category: "Fan" },
+            { id: 8, name: "Mobilografiya", mentor: "Jasur", icon: "fa-camera", category: "Media" }
+        ];
+
+        const skillContainer = document.getElementById('skillContainer');
+        const skillSearch = document.getElementById('skillSearch');
+
+        // 2. Bilimlarni ekranga chiqarish funksiyasi
+        function displaySkills(skills) {
+            skillContainer.innerHTML = '';
+            
+            if(skills.length === 0) {
+                skillContainer.innerHTML = '<p style="text-align:center; grid-column: 1/-1;">Hech narsa topilmadi...</p>';
+                return;
+            }
+
+            skills.forEach(skill => {
+                const card = document.createElement('div');
+                card.className = 'skill-card';
+                card.innerHTML = `
+                    <i class="fas ${skill.icon}"></i>
+                    <h3>${skill.name}</h3>
+                    <p>Mentor: <strong>${skill.mentor}</strong></p>
+                    <p style="color: #94a3b8; font-size: 14px;">1 soat = 1 Coin</p>
+                    <button class="btn-swap" onclick="swapRequest('${skill.name}', '${skill.mentor}')">
+                        Almashish So'rovi
+                    </button>
+                `;
+                skillContainer.appendChild(card);
+            });
+        }
+
+        // 3. Qidiruv funksiyasi
+        skillSearch.addEventListener('input', (e) => {
+            const term = e.target.value.toLowerCase();
+            const filtered = skillsData.filter(s => 
+                s.name.toLowerCase().includes(term) || 
+                s.mentor.toLowerCase().includes(term)
+            );
+            displaySkills(filtered);
+        });
+
+        // 4. Almashish so'rovi (Interaktivlik)
+        function swapRequest(skill, mentor) {
+            alert(`Tabriklaymiz! \n\n${mentor}ga "${skill}" bo'yicha so'rov yuborildi. \nSizning hisobingizdan 1 Skill-Coin vaqtinchalik muzlatildi.`);
+        }
+
+        // Dastlabki yuklanish
+        displaySkills(skillsData);
+
+        // Sahifa skroll bo'lganda navbar effektini boshqarish
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.padding = '10px 0';
+                header.style.background = '#ffffff';
+            } else {
+                header.style.padding = '15px 0';
+            }
+        });
+    </script>
+</body>
+</html>
